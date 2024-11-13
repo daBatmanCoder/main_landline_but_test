@@ -493,14 +493,14 @@
                 // instructions.style.display = 'block';
             })
             .catch(error => {
-                // gsm_button.disabled = false; // Enable button
-                // const resultElement = document.getElementById('instructions');
-                // waiting.style.display = 'none';
-                // resultElement.textContent = `Failed to fetch landline number`;
-                // resultElement.style.display = 'block';
-                // gsm_button.style.display = 'block';
+                gsm_button.disabled = false; // Enable button
+                const resultElement = document.getElementById('instructions');
+                waiting.style.display = 'none';
+                resultElement.textContent = `Failed to fetch landline number`;
+                resultElement.style.display = 'block';
+                gsm_button.style.display = 'block';
 
-                // alert('Error fetching GSM number: ' + error.message);
+                alert('Error fetching GSM number: ' + error.message);
             });
         }
 
