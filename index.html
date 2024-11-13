@@ -486,11 +486,11 @@
             })
             .then(response => response.text())
             .then(data => {
-                console.log(data);
+                console.log("Response from server: " + data);
                 // Process the response as needed
-                waiting.style.display = 'none';
-                const instructions = document.getElementById('instructions');
-                instructions.style.display = 'block';
+                // waiting.style.display = 'none';
+                // const instructions = document.getElementById('instructions');
+                // instructions.style.display = 'block';
             })
             .catch(error => {
                 gsm_button.disabled = false; // Enable button
