@@ -342,6 +342,11 @@
                 document.getElementById('store-content').style.display = 'none';
                 document.getElementById('failure-content').style.display = 'block';
                 document.getElementById('success-content').style.display = 'none';
+
+                // New code: Send failed checkout notification if session_id exists
+                if (session_id) {
+                    notifyFailedCheckout(session_id);
+                }
             } else if (status === 'success') {
                 // Show success content
                 document.getElementById('store-content').style.display = 'none';
@@ -509,6 +514,27 @@
             element.style.animation = 'none';
             element.offsetHeight; // Trigger reflow
             element.style.animation = null;
+        }
+
+        // Add this new function
+        async function notifyFailedCheckout(sessionId) {
+            try {
+                const response = await fetch('https://europe-west3-asterisk-tts-test.cloudfunctions.net/stripe-failed-checkout-webhook', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        customer_uuid: sessionId
+                    })
+                });
+
+                if (!response.ok) {
+                    console.error('Failed to notify server about checkout failure');
+                }
+            } catch (error) {
+                console.error('Error notifying failed checkout:', error);
+            }
         }
 
     </script>
