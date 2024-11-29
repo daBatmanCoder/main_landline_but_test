@@ -519,7 +519,7 @@
         // Add this new function
         async function notifyFailedCheckout(sessionId) {
             try {
-                const response = await fetch('https://europe-west3-asterisk-tts-test.cloudfunctions.net/stripe-failed-checkout-webhook', {
+                const response = await fetch('https://us-central1-arnacon-staging-production.cloudfunctions.net/stripe-failed-checkout-test', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
